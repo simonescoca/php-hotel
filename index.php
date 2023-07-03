@@ -19,6 +19,7 @@ NOTA:
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
         <title>Hotels</title>
     </head>
     <body>
@@ -61,5 +62,30 @@ NOTA:
                 ]
             ];
         ?>
+        <div class="container">
+            <ul class="list-unstyled my_hotels-container">
+                <?php
+                    foreach($hotels as $hotel) { 
+                ?>
+                    <li>
+                        <ul class="list-unstyled d-flex flex-wrap justify-content-between">
+                            <?php
+                                foreach($hotel as $key => $value) {
+                            ?>
+                                <li>
+                                    <?php
+                                        echo $key." ".$value;
+                                    ?>
+                                </li>
+                            <?php
+                                }
+                            ?>
+                        </ul>
+                    </li>
+                <?php
+                    }
+                ?>
+            </ul>
+        </div>
     </body>
 </html>
