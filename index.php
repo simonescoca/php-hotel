@@ -61,31 +61,62 @@ NOTA:
                     'distance_to_center' => 50
                 ]
             ];
+
+            foreach ($hotels as $hotel) {
+                foreach ($hotel as $key => $value) {
+                    
+                }
+            }
         ?>
         <div class="container">
-            <ul class="list-unstyled my_hotels-container">
-                <?php
-                    foreach($hotels as $hotel) { 
-                ?>
-                    <li>
-                        <ul class="list-unstyled d-flex flex-wrap justify-content-between">
-                            <?php
-                                foreach($hotel as $key => $value) {
-                            ?>
-                                <li>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <!-- foreach delle key -->
+                        <?php
+                            foreach($hotel as $key => $value) {
+                        ?>
+                                <th scope="col">
                                     <?php
-                                        echo $key." ".$value;
+                                        if ($key === "distance_to_center") {
+                                            $key = str_replace("_", " ", $key);
+                                        }
+                                        echo ucwords($key);
                                     ?>
-                                </li>
-                            <?php
-                                }
-                            ?>
-                        </ul>
-                    </li>
-                <?php
-                    }
-                ?>
-            </ul>
+                                </th>
+                        <?php
+                            }
+                        ?>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- foreach di hotel in hotels -->
+                    <?php
+                        foreach($hotels as $hotel) {
+                    ?>
+                            <tr>
+                                <?php
+                                    foreach($hotel as $key => $value) {
+                                ?>
+                                        <td>
+                                            <?php
+                                                if ($value === true) {
+                                                    $value = "true";
+                                                } elseif ($value === false) {
+                                                    $value = "false";
+                                                }
+                                                echo $value
+                                            ?>
+                                        </td>
+                                <?php
+                                    }
+                                ?>
+                            </tr>
+                    <?php
+                        }
+                    ?>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>
