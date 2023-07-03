@@ -84,7 +84,11 @@ NOTA:
                 });
             }
 
-            if ()
+            if ($vote !== '') {
+                $hotels = array_filter ($hotels, function($hotel) use ($vote) {
+                    return $hotel["vote"] >= $vote;
+                });
+            }
 
             foreach ($hotels as $hotel) {
                 foreach ($hotel as $key => $value) {
