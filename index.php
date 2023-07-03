@@ -21,9 +21,21 @@ NOTA:
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
         <title>Hotels</title>
+        <style>
+            form {
+                gap: 2rem;
+            }
+
+            .my_input-number {
+                width: 3rem;
+            }
+        </style>
     </head>
     <body>
         <?php
+            $parking = isset($_GET["parking"]);
+            $vote = $_GET["vote"];
+
             $hotels = [
                 [
                     'name' => 'Hotel Belvedere',
@@ -62,13 +74,44 @@ NOTA:
                 ]
             ];
 
+            if ($parking === true) {
+                $hotels = array_filter ($hotels, function($hotel) {
+                    return $hotel["parking"] === true;
+                });
+            } elseif ($parking === false) {
+                $hotels = array_filter ($hotels, function($hotel) {
+                    return $hotel["parking"] === false;
+                });
+            }
+
+            if ()
+
             foreach ($hotels as $hotel) {
                 foreach ($hotel as $key => $value) {
-                    
+                    // do nothing
                 }
             }
         ?>
         <div class="container">
+
+            <form action="./" method="get" class="my-5 d-flex justify-content-center align-items-center">
+                <div class="d-flex align-items-center my_range-container">
+                    <label for="vote" class="form-label m-0 me-3">
+                        Minimum Vote
+                    </label>
+                    <input type="number" class="my_input-number" name="vote" id="vote" min="1" max="5" step="1">
+                </div>
+                <div class="form-check m-0">
+                    <input type="checkbox" class="form-check-input" name="parking" id="parking">
+                    <label class="m-0 form-check-label" for="exampleCheck1">
+                        Parking
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    Submit
+                </button>
+            </form>
+
             <table class="table">
                 <thead>
                     <tr>
